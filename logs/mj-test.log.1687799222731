@@ -1,0 +1,52 @@
+INFO  19:06:51,541 - Compiling source file: E:\Andrea\Fakultet\Cetvrta godina\PP1\Projekat\Domaci\workspace\final\test\test1.mj
+INFO  19:06:51,614 - #2 program
+INFO  19:06:51,614 - #46 MJProgram
+INFO  19:06:51,615 - #6 const
+INFO  19:06:51,616 - #46 int
+INFO  19:06:51,616 - #46 pi
+INFO  19:06:51,617 - #31 =
+INFO  19:06:51,617 - #45 3
+INFO  19:06:51,617 - #36 ,
+INFO  19:06:51,618 - #46 e
+INFO  19:06:51,618 - #31 =
+INFO  19:06:51,618 - #45 2
+INFO  19:06:51,618 - #34 ;
+INFO  19:06:51,618 - #42 {
+INFO  19:06:51,618 - #43 }
+INFO  19:06:51,624 - Program(
+  ProgName(
+   MJProgram
+  ) [ProgName]
+  DeclarationList(
+    NoDeclarationList(
+    ) [NoDeclarationList]
+    ConstDeclarationItem(
+      ConstDeclaration(
+        Type(
+         int
+        ) [Type]
+        MultipleConsts(
+          SingleConst(
+            ConstItem(
+             pi
+              ConstNum(
+               3
+              ) [ConstNum]
+            ) [ConstItem]
+          ) [SingleConst]
+          ConstItem(
+           e
+            ConstNum(
+             2
+            ) [ConstNum]
+          ) [ConstItem]
+        ) [MultipleConsts]
+      ) [ConstDeclaration]
+    ) [ConstDeclarationItem]
+  ) [DeclarationList]
+  NoMethDeclarationList(
+  ) [NoMethDeclarationList]
+) [Program]
+INFO  19:06:51,659 - =====================SEMANTICKA OBRADA=====================
+ERROR 19:06:51,665 - metoda main nije deklarisana
+ERROR 19:06:51,666 - Parsiranje NIJE uspesno zavrseno!

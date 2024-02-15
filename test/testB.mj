@@ -1,0 +1,67 @@
+program MJProgram
+	const char a = 5;
+	type b;
+	const int c = 2; 
+	char d;
+	int e;
+	int arr1[];
+	int arr2[];
+	char e;
+{
+	char f(int m, int n, int p){
+		m = 10;
+		return m;
+	}
+	
+	int func(){
+		return;
+	}
+	
+	void main() {
+		k = 4;
+		c = 3;
+		d = 5;
+		
+		c++;
+		d--;
+		d();
+		
+		break;
+		continue;
+		
+		read(c);
+		read(b);
+		
+		print(b);
+		
+		if(d){}
+		
+		while(d){}
+		
+		f(5);
+		f(5, 4, 'c');
+		
+		if(5 < 'c'){}
+		
+		if(arr1 > arr2){}
+		
+		e = -'c';
+		
+		e = 5;
+		e = e + 'c';
+		
+		e = 5;
+		e = e * 'c';
+		
+		e();
+		
+		arr1 = new int['c'];
+		
+		e = arr1[1];
+		e = arr1['c'];
+		e = e[1];
+	
+		return;
+	}
+	
+}

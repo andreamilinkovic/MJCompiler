@@ -1,0 +1,49 @@
+program MJProgram
+	const int a = 5;
+	const bool b = true;
+	const char c = 'c';
+	int x, y;
+	int arr[];
+	char character;
+{
+	int func(int a, int b, char c){
+		return 0;
+	}
+	
+	void main() int i;{
+		x = 5;
+		y = 3;
+		character = 'm';
+		
+		if(x > y){
+			print(x);
+		} else {
+			print(y);
+		}
+		
+		i = 5;
+		
+		while(i > 0){
+			if(i == 1) {break;}
+			if(i == 2) {continue;}
+			print(i);
+			i--;
+		}
+		
+		{
+		 	x++;
+		}
+		
+		func(x, y, character);
+		
+		if(x > 0 && y > 0 || x == 0){
+			print(character);
+		}
+		
+		x = -x * y + x / (y - x);
+		
+		arr = new int[5];
+		
+		return;
+	}
+}

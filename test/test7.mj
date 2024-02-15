@@ -1,0 +1,53 @@
+program MJProgram
+	const int size = 10;
+	int pos[];
+	int a, b;
+	char c;
+	bool arr[];
+{	
+	int f(int m, int n, int p){
+		m = 10;
+		return -a + b;
+	}
+	
+	void main() 
+		int x, i;
+	{
+		a = 10;
+		x = size;
+		f(a, b, i);
+		pos[0] = 0;
+		
+		x++;
+
+		[a, , x] = pos;
+		
+		read(a);
+		read(pos[0]);
+		
+		print(1);
+		print('a');
+		print(arr[0]);
+		
+		if(size >= 5){
+		
+		} else {
+		
+		}
+		
+		while(size == 10){
+			break;
+		}
+		
+		pos.foreach(a => continue;);
+		
+		if(pos == pos){
+		
+		}
+		
+		pos = new int[5];
+		
+		a = pos[5];
+		
+	}
+}

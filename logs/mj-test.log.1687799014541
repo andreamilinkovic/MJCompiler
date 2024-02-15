@@ -1,0 +1,223 @@
+INFO  19:01:36,907 - Compiling source file: E:\Andrea\Fakultet\Cetvrta godina\PP1\Projekat\Domaci\workspace\final\test\testA.mj
+INFO  19:01:36,958 - #2 program
+INFO  19:01:36,959 - #46 MJProgram
+INFO  19:01:36,959 - #46 int
+INFO  19:01:36,961 - #46 a
+INFO  19:01:36,962 - #40 [
+INFO  19:01:36,962 - #45 5
+ERROR 19:01:36,962 - 
+Sintaksna greska na liniji 3
+INFO  19:01:36,962 - #41 ]
+INFO  19:01:36,962 - #34 ;
+INFO  19:01:36,962 - #46 int
+INFO  19:01:36,963 - #46 b
+INFO  19:01:36,963 - #36 ,
+ERROR 19:01:36,963 - Greska prilikom definisanja globalne promenljive. Izvrsen je oporavak na liniji 3
+INFO  19:01:37,014 - #46 c
+INFO  19:01:37,015 - #36 ,
+INFO  19:01:37,015 - #46 char
+INFO  19:01:37,015 - #46 d
+ERROR 19:01:37,015 - 
+Sintaksna greska na liniji 4
+INFO  19:01:37,016 - #34 ;
+INFO  19:01:37,016 - #4 class
+INFO  19:01:37,016 - #46 A
+INFO  19:01:37,016 - #14 extends
+ERROR 19:01:37,016 - Greska prilikom definisanja globalne promenljive. Izvrsen je oporavak na liniji 4
+INFO  19:01:37,017 - #46 B
+INFO  19:01:37,017 - #36 ,
+ERROR 19:01:37,017 - 
+Sintaksna greska na liniji 5
+INFO  19:01:37,017 - #46 C
+INFO  19:01:37,017 - #42 {
+INFO  19:01:37,017 - #42 {
+INFO  19:01:37,017 - #43 }
+INFO  19:01:37,017 - #43 }
+ERROR 19:01:37,018 - Greska prilikom deklaracije prosirenja natklase. Izvrsen je oporavak na liniji 5
+INFO  19:01:37,050 - #42 {
+INFO  19:01:37,051 - #13 void
+INFO  19:01:37,051 - #46 main
+INFO  19:01:37,052 - #38 (
+INFO  19:01:37,053 - #39 )
+INFO  19:01:37,054 - #42 {
+INFO  19:01:37,054 - #46 b
+INFO  19:01:37,055 - #32 ++
+INFO  19:01:37,055 - #34 ;
+INFO  19:01:37,056 - #46 a
+INFO  19:01:37,056 - #31 =
+INFO  19:01:37,056 - #46 c
+INFO  19:01:37,059 - #18 +
+INFO  19:01:37,062 - #34 ;
+ERROR 19:01:37,063 - 
+Sintaksna greska na liniji 12
+INFO  19:01:37,063 - #46 c
+INFO  19:01:37,063 - #32 ++
+INFO  19:01:37,063 - #34 ;
+ERROR 19:01:37,063 - Greska prilikom konstrukcije iskaza dodele. Izvrsen je oporavak na liniji 12
+INFO  19:01:37,079 - #43 }
+INFO  19:01:37,079 - #46 int
+INFO  19:01:37,080 - #46 f
+INFO  19:01:37,080 - #38 (
+INFO  19:01:37,080 - #46 int
+INFO  19:01:37,080 - #46 x
+INFO  19:01:37,080 - #36 ,
+INFO  19:01:37,081 - #46 y
+INFO  19:01:37,082 - #39 )
+ERROR 19:01:37,082 - 
+Sintaksna greska na liniji 17
+INFO  19:01:37,082 - #42 {
+INFO  19:01:37,082 - #7 if
+INFO  19:01:37,082 - #38 (
+ERROR 19:01:37,082 - Greska prilikom deklaracije formalnog parametra funkcije. Izvrsen je oporavak na liniji 17
+INFO  19:01:37,098 - #46 a
+INFO  19:01:37,098 - #23 ==
+INFO  19:01:37,099 - #39 )
+ERROR 19:01:37,099 - 
+Sintaksna greska na liniji 19
+INFO  19:01:37,099 - #42 {
+INFO  19:01:37,099 - #43 }
+INFO  19:01:37,099 - #43 }
+ERROR 19:01:37,100 - Greska u logickom izrazu unutar if konstrukcije. Izvrsen je oporavak na liniji 19
+INFO  19:01:37,115 - #43 }
+INFO  19:01:37,124 - Program(
+  ProgName(
+   MJProgram
+  ) [ProgName]
+  DeclarationList(
+    DeclarationList(
+      DeclarationList(
+        NoDeclarationList(
+        ) [NoDeclarationList]
+        VarDeclarationItem(
+          VarDeclaration(
+            Type(
+             int
+            ) [Type]
+            SingleVar(
+              ErrorVarItem(
+              ) [ErrorVarItem]
+            ) [SingleVar]
+          ) [VarDeclaration]
+        ) [VarDeclarationItem]
+      ) [DeclarationList]
+      VarDeclarationItem(
+        VarDeclaration(
+          Type(
+           int
+          ) [Type]
+          MultipleVars(
+            MultipleVars(
+              SingleVar(
+                VariableItem(
+                 b
+                  NoArrayVar(
+                  ) [NoArrayVar]
+                ) [VariableItem]
+              ) [SingleVar]
+              VariableItem(
+               c
+                NoArrayVar(
+                ) [NoArrayVar]
+              ) [VariableItem]
+            ) [MultipleVars]
+            ErrorVarItem(
+            ) [ErrorVarItem]
+          ) [MultipleVars]
+        ) [VarDeclaration]
+      ) [VarDeclarationItem]
+    ) [DeclarationList]
+    ClassDeclarationItem(
+      ClassDeclaration(
+       A
+        ErrorExtendsClass(
+        ) [ErrorExtendsClass]
+        NoOptVarDeclaration(
+        ) [NoOptVarDeclaration]
+        ClassConstructorMethod(
+          NoConstrMethList(
+          ) [NoConstrMethList]
+        ) [ClassConstructorMethod]
+      ) [ClassDeclaration]
+    ) [ClassDeclarationItem]
+  ) [DeclarationList]
+  MethDeclarationList(
+    MethDeclarationList(
+      NoMethDeclarationList(
+      ) [NoMethDeclarationList]
+      MethodDeclaration(
+        MethDeclTypeName(
+          MethodReturnTypeVoid(
+          ) [MethodReturnTypeVoid]
+         main
+        ) [MethDeclTypeName]
+        NoOptionalFormPars(
+        ) [NoOptionalFormPars]
+        NoOptVarDeclaration(
+        ) [NoOptVarDeclaration]
+        OptStatementList(
+          OptStatementList(
+            OptStatementList(
+              NoOptStatementList(
+              ) [NoOptStatementList]
+              DesignatorStmt(
+                IncEff(
+                  DesignVar(
+                   b
+                  ) [DesignVar]
+                ) [IncEff]
+              ) [DesignatorStmt]
+            ) [OptStatementList]
+            DesignatorStmt(
+              AssignOper(
+                ErrorAssign(
+                ) [ErrorAssign]
+              ) [AssignOper]
+            ) [DesignatorStmt]
+          ) [OptStatementList]
+          DesignatorStmt(
+            IncEff(
+              DesignVar(
+               c
+              ) [DesignVar]
+            ) [IncEff]
+          ) [DesignatorStmt]
+        ) [OptStatementList]
+      ) [MethodDeclaration]
+    ) [MethDeclarationList]
+    MethodDeclaration(
+      MethDeclTypeName(
+        MethodReturnTypeAny(
+          Type(
+           int
+          ) [Type]
+        ) [MethodReturnTypeAny]
+       f
+      ) [MethDeclTypeName]
+      OptionalFormPars(
+        ErrorFormPars(
+        ) [ErrorFormPars]
+      ) [OptionalFormPars]
+      NoOptVarDeclaration(
+      ) [NoOptVarDeclaration]
+      OptStatementList(
+        NoOptStatementList(
+        ) [NoOptStatementList]
+        IfStmt(
+          ErrorIf(
+          ) [ErrorIf]
+          BlockStmt(
+            NoOptStatementList(
+            ) [NoOptStatementList]
+          ) [BlockStmt]
+          NoElseStmt(
+          ) [NoElseStmt]
+        ) [IfStmt]
+      ) [OptStatementList]
+    ) [MethodDeclaration]
+  ) [MethDeclarationList]
+) [Program]
+INFO  19:01:37,124 - =====================SEMANTICKA OBRADA=====================
+INFO  19:01:37,131 - Pretraga na 11(b), nadjeno Var b: int, 0, 0 
+INFO  19:01:37,132 - Pretraga na 14(c), nadjeno Var c: int, 1, 0 
+ERROR 19:01:37,132 - Greska na 17: metoda f nema povratnu vrednost (return)
+ERROR 19:01:37,132 - Parsiranje NIJE uspesno zavrseno!

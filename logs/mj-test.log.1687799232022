@@ -1,0 +1,144 @@
+INFO  19:07:02,736 - Compiling source file: E:\Andrea\Fakultet\Cetvrta godina\PP1\Projekat\Domaci\workspace\final\test\test2.mj
+INFO  19:07:02,798 - #2 program
+INFO  19:07:02,799 - #46 MJProgram
+INFO  19:07:02,799 - #46 int
+INFO  19:07:02,800 - #46 a
+INFO  19:07:02,801 - #40 [
+INFO  19:07:02,801 - #41 ]
+INFO  19:07:02,801 - #34 ;
+INFO  19:07:02,802 - #46 int
+INFO  19:07:02,802 - #46 b
+INFO  19:07:02,802 - #36 ,
+INFO  19:07:02,803 - #46 c
+INFO  19:07:02,803 - #34 ;
+INFO  19:07:02,803 - #46 int
+INFO  19:07:02,803 - #46 d
+INFO  19:07:02,803 - #34 ;
+INFO  19:07:02,803 - #42 {
+INFO  19:07:02,803 - #46 int
+INFO  19:07:02,804 - #46 main
+INFO  19:07:02,804 - #38 (
+INFO  19:07:02,805 - #39 )
+INFO  19:07:02,805 - #42 {
+INFO  19:07:02,841 - #46 e
+INFO  19:07:02,842 - #31 =
+INFO  19:07:02,843 - #45 5
+INFO  19:07:02,844 - #34 ;
+INFO  19:07:02,846 - #43 }
+INFO  19:07:02,847 - #43 }
+INFO  19:07:02,857 - Program(
+  ProgName(
+   MJProgram
+  ) [ProgName]
+  DeclarationList(
+    DeclarationList(
+      DeclarationList(
+        NoDeclarationList(
+        ) [NoDeclarationList]
+        VarDeclarationItem(
+          VarDeclaration(
+            Type(
+             int
+            ) [Type]
+            SingleVar(
+              VariableItem(
+               a
+                ArrayVar(
+                ) [ArrayVar]
+              ) [VariableItem]
+            ) [SingleVar]
+          ) [VarDeclaration]
+        ) [VarDeclarationItem]
+      ) [DeclarationList]
+      VarDeclarationItem(
+        VarDeclaration(
+          Type(
+           int
+          ) [Type]
+          MultipleVars(
+            SingleVar(
+              VariableItem(
+               b
+                NoArrayVar(
+                ) [NoArrayVar]
+              ) [VariableItem]
+            ) [SingleVar]
+            VariableItem(
+             c
+              NoArrayVar(
+              ) [NoArrayVar]
+            ) [VariableItem]
+          ) [MultipleVars]
+        ) [VarDeclaration]
+      ) [VarDeclarationItem]
+    ) [DeclarationList]
+    VarDeclarationItem(
+      VarDeclaration(
+        Type(
+         int
+        ) [Type]
+        SingleVar(
+          VariableItem(
+           d
+            NoArrayVar(
+            ) [NoArrayVar]
+          ) [VariableItem]
+        ) [SingleVar]
+      ) [VarDeclaration]
+    ) [VarDeclarationItem]
+  ) [DeclarationList]
+  MethDeclarationList(
+    NoMethDeclarationList(
+    ) [NoMethDeclarationList]
+    MethodDeclaration(
+      MethDeclTypeName(
+        MethodReturnTypeAny(
+          Type(
+           int
+          ) [Type]
+        ) [MethodReturnTypeAny]
+       main
+      ) [MethDeclTypeName]
+      NoOptionalFormPars(
+      ) [NoOptionalFormPars]
+      NoOptVarDeclaration(
+      ) [NoOptVarDeclaration]
+      OptStatementList(
+        NoOptStatementList(
+        ) [NoOptStatementList]
+        DesignatorStmt(
+          AssignOper(
+            DesignAssignOp(
+              DesignVar(
+               e
+              ) [DesignVar]
+              AssignOperation(
+              ) [AssignOperation]
+              Expr(
+                ExpressionTerm(
+                  PositiveExpr(
+                  ) [PositiveExpr]
+                  Term(
+                    FactorNum(
+                     5
+                    ) [FactorNum]
+                    NoOptMulFacts(
+                    ) [NoOptMulFacts]
+                  ) [Term]
+                ) [ExpressionTerm]
+                NoOptAddTerms(
+                ) [NoOptAddTerms]
+              ) [Expr]
+            ) [DesignAssignOp]
+          ) [AssignOper]
+        ) [DesignatorStmt]
+      ) [OptStatementList]
+    ) [MethodDeclaration]
+  ) [MethDeclarationList]
+) [Program]
+INFO  19:07:02,859 - =====================SEMANTICKA OBRADA=====================
+ERROR 19:07:02,866 - Greska na 7: promenljiva e nije deklarisana
+ERROR 19:07:02,868 - Greska na 7: tip promenljive noObj i izraza nisu kompatibilni
+ERROR 19:07:02,868 - Greska na 6: metoda main nema povratnu vrednost (return)
+ERROR 19:07:02,868 - Greska na 6: metoda main mora biti tipa void
+ERROR 19:07:02,869 - Parsiranje NIJE uspesno zavrseno!

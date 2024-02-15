@@ -1,0 +1,17 @@
+program MJProgram
+	int y;
+{
+	void f(char ch, int a, int arg)
+	int x; char y;
+	{
+		x = arg;
+	}
+	
+	int func(){
+		return 1;
+	}
+	
+	void main() {
+	
+	}
+}

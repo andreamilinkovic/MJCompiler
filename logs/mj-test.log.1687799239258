@@ -1,0 +1,170 @@
+INFO  19:07:12,027 - Compiling source file: E:\Andrea\Fakultet\Cetvrta godina\PP1\Projekat\Domaci\workspace\final\test\test3.mj
+INFO  19:07:12,084 - #2 program
+INFO  19:07:12,084 - #46 MJProgram
+INFO  19:07:12,085 - #46 int
+INFO  19:07:12,086 - #46 x
+INFO  19:07:12,086 - #34 ;
+INFO  19:07:12,088 - #6 const
+INFO  19:07:12,088 - #46 int
+INFO  19:07:12,088 - #46 pi
+INFO  19:07:12,088 - #31 =
+INFO  19:07:12,088 - #45 3
+INFO  19:07:12,088 - #36 ,
+INFO  19:07:12,089 - #46 e
+INFO  19:07:12,089 - #31 =
+INFO  19:07:12,089 - #45 2
+INFO  19:07:12,090 - #34 ;
+INFO  19:07:12,090 - #42 {
+INFO  19:07:12,090 - #13 void
+INFO  19:07:12,091 - #46 main
+INFO  19:07:12,091 - #38 (
+INFO  19:07:12,092 - #46 int
+INFO  19:07:12,092 - #46 param1
+INFO  19:07:12,092 - #36 ,
+INFO  19:07:12,093 - #46 int
+INFO  19:07:12,093 - #46 param2
+INFO  19:07:12,094 - #39 )
+INFO  19:07:12,094 - #46 int
+INFO  19:07:12,094 - #46 i
+INFO  19:07:12,094 - #34 ;
+INFO  19:07:12,094 - #46 int
+INFO  19:07:12,095 - #46 x
+INFO  19:07:12,095 - #40 [
+INFO  19:07:12,095 - #41 ]
+INFO  19:07:12,095 - #34 ;
+INFO  19:07:12,095 - #46 char
+INFO  19:07:12,095 - #46 ch
+INFO  19:07:12,096 - #34 ;
+INFO  19:07:12,096 - #42 {
+INFO  19:07:12,096 - #43 }
+INFO  19:07:12,096 - #43 }
+INFO  19:07:12,102 - Program(
+  ProgName(
+   MJProgram
+  ) [ProgName]
+  DeclarationList(
+    DeclarationList(
+      NoDeclarationList(
+      ) [NoDeclarationList]
+      VarDeclarationItem(
+        VarDeclaration(
+          Type(
+           int
+          ) [Type]
+          SingleVar(
+            VariableItem(
+             x
+              NoArrayVar(
+              ) [NoArrayVar]
+            ) [VariableItem]
+          ) [SingleVar]
+        ) [VarDeclaration]
+      ) [VarDeclarationItem]
+    ) [DeclarationList]
+    ConstDeclarationItem(
+      ConstDeclaration(
+        Type(
+         int
+        ) [Type]
+        MultipleConsts(
+          SingleConst(
+            ConstItem(
+             pi
+              ConstNum(
+               3
+              ) [ConstNum]
+            ) [ConstItem]
+          ) [SingleConst]
+          ConstItem(
+           e
+            ConstNum(
+             2
+            ) [ConstNum]
+          ) [ConstItem]
+        ) [MultipleConsts]
+      ) [ConstDeclaration]
+    ) [ConstDeclarationItem]
+  ) [DeclarationList]
+  MethDeclarationList(
+    NoMethDeclarationList(
+    ) [NoMethDeclarationList]
+    MethodDeclaration(
+      MethDeclTypeName(
+        MethodReturnTypeVoid(
+        ) [MethodReturnTypeVoid]
+       main
+      ) [MethDeclTypeName]
+      OptionalFormPars(
+        MultipleFormPars(
+          SingleFormPar(
+            FormParsItem(
+              Type(
+               int
+              ) [Type]
+             param1
+              NoArrayVar(
+              ) [NoArrayVar]
+            ) [FormParsItem]
+          ) [SingleFormPar]
+          FormParsItem(
+            Type(
+             int
+            ) [Type]
+           param2
+            NoArrayVar(
+            ) [NoArrayVar]
+          ) [FormParsItem]
+        ) [MultipleFormPars]
+      ) [OptionalFormPars]
+      OptVarDeclaration(
+        OptVarDeclaration(
+          OptVarDeclaration(
+            NoOptVarDeclaration(
+            ) [NoOptVarDeclaration]
+            VarDeclaration(
+              Type(
+               int
+              ) [Type]
+              SingleVar(
+                VariableItem(
+                 i
+                  NoArrayVar(
+                  ) [NoArrayVar]
+                ) [VariableItem]
+              ) [SingleVar]
+            ) [VarDeclaration]
+          ) [OptVarDeclaration]
+          VarDeclaration(
+            Type(
+             int
+            ) [Type]
+            SingleVar(
+              VariableItem(
+               x
+                ArrayVar(
+                ) [ArrayVar]
+              ) [VariableItem]
+            ) [SingleVar]
+          ) [VarDeclaration]
+        ) [OptVarDeclaration]
+        VarDeclaration(
+          Type(
+           char
+          ) [Type]
+          SingleVar(
+            VariableItem(
+             ch
+              NoArrayVar(
+              ) [NoArrayVar]
+            ) [VariableItem]
+          ) [SingleVar]
+        ) [VarDeclaration]
+      ) [OptVarDeclaration]
+      NoOptStatementList(
+      ) [NoOptStatementList]
+    ) [MethodDeclaration]
+  ) [MethDeclarationList]
+) [Program]
+INFO  19:07:12,102 - =====================SEMANTICKA OBRADA=====================
+ERROR 19:07:12,106 - Greska na 5: funkcija main ne sme imati argumente
+ERROR 19:07:12,107 - Parsiranje NIJE uspesno zavrseno!

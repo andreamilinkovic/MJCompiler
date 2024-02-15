@@ -1,0 +1,462 @@
+package rs.ac.bg.etf.pp1;
+
+import java_cup.runtime.*;
+import org.apache.log4j.*;
+import rs.ac.bg.etf.pp1.ast.*;
+
+parser code {:
+	
+	Boolean errorDetected;
+	Logger log = Logger.getLogger(getClass());
+   
+   
+    // slede redefinisani metodi za prijavu gresaka radi izmene teksta poruke
+     
+    public void report_fatal_error(String message, Object info) throws java.lang.Exception {
+      done_parsing();
+      report_error(message, info);
+    }
+  
+    public void syntax_error(Symbol cur_token) {
+        report_error("\nSintaksna greska", cur_token);
+    }
+  
+    public void unrecovered_syntax_error(Symbol cur_token) throws java.lang.Exception {
+        report_fatal_error("Fatalna greska, parsiranje se ne moze nastaviti", cur_token);
+    }
+
+    public void report_error(String message, Object info) {
+    	errorDetected = true;
+    	StringBuilder msg = new StringBuilder(message); 
+    	if (info instanceof Symbol)
+            msg.append (" na liniji ").append(((Symbol)info).left);
+        log.error(msg.toString());
+    }
+
+
+:}
+
+init with {:
+	errorDetected = false;
+:}
+
+scan with {:
+	Symbol s = this.getScanner().next_token();
+	if (s != null && s.value != null) 
+		log.info(s.toString() + " " + s.value.toString());
+	return s;
+:}
+
+/********************** Terminals *********************/
+
+terminal PROG, BREAK, CLASS, ELSE, CONST, IF, WHILE, NEW, PRINT, READ, RETURN, VOID, EXTENDS, CONTINUE, FOREACH, MAP;
+terminal PLUS, MINUS, MUL, DIV, MOD;
+terminal EQUALS, NOT_EQUALS, GREATER, GREATER_EQUALS, LESS, LESS_EQUALS;
+terminal AND, OR;
+terminal EQUAL, INC, DEC;
+terminal SEMI, COLON, COMMA, DOT, LPAREN, RPAREN, LBRACKET, RBRACKET, LBRACE, RBRACE;
+terminal ASSIGMENT;
+
+terminal Integer NUMBER;
+terminal String IDENT;
+terminal Boolean BOOL;
+terminal Character CHAR;
+
+/********************* Nonterminals *******************/
+
+nonterminal DeclList, MethodDeclList;
+
+nonterminal DeclItem, ConstDecl, VarDecl, ClassDecl;
+
+nonterminal ConstDeclList, ConstItem;
+
+nonterminal VarDeclList, VarItem, ArrayType;
+
+nonterminal ExtendsClass, OptVarDecl, ClassConstrMeth, ConstrMethList;
+nonterminal ConstructorDecl, OptFormPars, OptStmtList;
+
+nonterminal MethodReturnType, FormPars, FormParsItem;
+
+nonterminal Statement;
+nonterminal DesignatorStatement, IfCondition, OptElse;				   
+nonterminal WhileStart;
+nonterminal ForeachEnd;
+
+nonterminal Assignop, OptActPars;
+nonterminal ActPars, Addop, OtpMinusExpr;
+nonterminal Mulop;
+
+nonterminal Relop;
+
+nonterminal Label;
+
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Program, ProgName;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ConstType;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj MethDeclTypeName, MethodDecl;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj Designator, OptDesignator, OptDesignatorList;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj ForeachName;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj OptNumConst;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj MapName;
+nonterminal rs.etf.pp1.symboltable.concepts.Obj OptMethCall;
+
+nonterminal rs.etf.pp1.symboltable.concepts.Struct Type;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct OptRetExpr, Expr, ExprTerm;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct OptAddTerms, Term;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct OptMulFacts, Factor;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct DesignatorAssignOperation;
+nonterminal rs.etf.pp1.symboltable.concepts.Struct CondFact, CondTerm, Condition;
+
+precedence left ELSE;
+
+
+/******************************************************/
+/*********************** Program **********************/
+/******************************************************/
+
+Program ::= (Program) PROG ProgName:p DeclList LBRACE MethodDeclList RBRACE;
+
+ProgName ::= (ProgName) IDENT:pName;
+
+/********************* Declaration *******************/
+
+DeclList ::= (DeclarationList) DeclList DeclItem
+			 | 
+			 (NoDeclarationList) /* epsilon */
+			 ;
+
+DeclItem ::= (ConstDeclarationItem) ConstDecl 
+		 	 | 
+		 	 (VarDeclarationItem) VarDecl 
+		 	 | 
+		 	 (ClassDeclarationItem) ClassDecl
+		 	 ;
+
+Type ::= (Type) IDENT:typeName;
+
+/********************** ConstDecl ********************/
+
+ConstDecl ::= (ConstDeclaration) CONST Type ConstDeclList SEMI;
+
+ConstDeclList ::= (MultipleConsts) ConstDeclList COMMA ConstItem
+				  |
+				  (SingleConst) ConstItem
+				  ;
+				  
+ConstItem ::= (ConstItem) IDENT:id EQUAL ConstType;
+				  
+ConstType ::= (ConstNum) NUMBER:value 
+		 	  |
+		 	  (ConstChar) CHAR:value 
+		 	  |
+		 	  (ConstBool) BOOL:value 
+		 	  ;
+		 	  
+/************************ VarDecl *********************/
+
+VarDecl ::= (VarDeclaration) Type VarDeclList SEMI;
+
+VarDeclList ::= (MultipleVars) VarDeclList COMMA VarItem
+			    |
+			    (SingleVar) VarItem
+			    ;
+			    
+VarItem ::= (VariableItem) IDENT:varName ArrayType
+			|
+			(ErrorVarItem) error:e
+			{: parser.report_error("Greska prilikom definisanja globalne promenljive. Izvrsen je oporavak na liniji " + eleft, null); :}
+			;
+		 	
+ArrayType ::= (ArrayVar) LBRACKET RBRACKET
+			  |
+			  (ArrayVarTwoDim) LBRACKET RBRACKET LBRACKET RBRACKET
+			  |
+			  (NoArrayVar) /* epsilon */
+			  ;
+	
+/*********************** ClassDecl ********************/	
+
+ClassDecl ::= (ClassDeclaration) CLASS IDENT ExtendsClass LBRACE OptVarDecl ClassConstrMeth RBRACE;
+
+ExtendsClass ::= (SuperClass) EXTENDS Type
+				 | 
+				 (NoSuperClass) /* epsilon */
+				 |
+				 (ErrorExtendsClass) error:e
+				 {: parser.report_error("Greska prilikom deklaracije prosirenja natklase. Izvrsen je oporavak na liniji " + eleft, null); :}
+				 ; 
+
+OptVarDecl ::= (OptVarDeclaration) OptVarDecl VarDecl
+			   |
+			   (NoOptVarDeclaration) /* epsilon */
+		       ;
+
+ClassConstrMeth ::= (ClassConstructorMethod) LBRACE ConstrMethList RBRACE
+					|
+					(NoClassConstructorMethod) /* epsilon */
+					;
+
+ConstrMethList ::= (Constructors) ConstructorDecl ConstrMethList
+				   |
+				   (Methods) MethodDecl MethodDeclList
+				   |
+				   (NoConstrMethList) /* epsilon */
+				   ;
+
+ConstructorDecl ::= (ConstrDeclaration) IDENT LPAREN OptFormPars RPAREN OptVarDecl LBRACE OptStmtList RBRACE;
+
+		
+			  
+/******************************************************/
+/*********************** Method ***********************/
+/******************************************************/
+
+MethodDeclList ::= (MethDeclarationList) MethodDeclList MethodDecl
+				   |
+				   (NoMethDeclarationList) /* epsilon */
+				   ;
+
+MethodDecl ::= (MethodDeclaration) MethDeclTypeName LPAREN OptFormPars RPAREN OptVarDecl LBRACE OptStmtList RBRACE;
+
+MethDeclTypeName ::= (MethDeclTypeName) MethodReturnType:retType IDENT:methodName;
+
+MethodReturnType ::= (MethodReturnTypeAny) Type
+					 |
+					 (MethodReturnTypeVoid) VOID
+					 ;	
+
+OptFormPars ::= (OptionalFormPars) FormPars		 
+				|
+				(NoOptionalFormPars) /* epsilon */
+				;
+
+FormPars ::= (MultipleFormPars) FormPars COMMA FormParsItem				 
+			 |
+			 (SingleFormPar) FormParsItem
+			 |
+			 (ErrorFormPars) error:e
+			 {: parser.report_error("Greska prilikom deklaracije formalnog parametra funkcije. Izvrsen je oporavak na liniji " + eleft, null); :}
+			 ;
+
+FormParsItem ::= (FormParsItem) Type IDENT:id ArrayType;
+
+
+/******************************************************/
+/********************* Statement **********************/
+/******************************************************/	
+
+OptStmtList ::= (OptStatementList) OptStmtList Statement
+				|
+				(NoOptStatementList) /* epsilon */
+				;
+
+Statement ::= (DesignatorStmt) DesignatorStatement SEMI
+			  |
+			  (IfStmt) IF LPAREN IfCondition RPAREN Statement OptElse
+			  |
+			  (WhileStmt) WHILE LPAREN Condition WhileStart Statement
+			  |
+			  (BreakStmt) BREAK SEMI
+			  |
+			  (ContinueStmt) CONTINUE SEMI
+			  | 
+			  (ReturnStmt) RETURN OptRetExpr SEMI
+			  |
+			  (ReadStmt) READ LPAREN Designator RPAREN SEMI
+			  |
+			  (PrintStmt) PRINT LPAREN Expr OptNumConst RPAREN SEMI
+			  |
+			  (ForeachStmt) Designator DOT FOREACH LPAREN ForeachName ASSIGMENT Statement RPAREN ForeachEnd
+			  |
+			  (BlockStmt) LBRACE OptStmtList RBRACE
+			  |
+			  (ErrorStmt) error:e
+			  {: parser.report_error("Greska (Statement). Izvrsen je oporavak na liniji " + eleft, null); :}
+			  ;
+			  
+OptRetExpr ::= (RetExpr) Expr
+			   |
+			   (NoRetExpr) /* epsilon */
+			   ;
+			
+OptNumConst ::= (OptPrint) COMMA NUMBER
+				|
+				(NoOptPrint) /* epsilon */
+				;
+				
+WhileStart ::= (WhileStart) RPAREN;
+
+ForeachName ::= (ForeachName) IDENT:id;
+
+ForeachEnd ::= (ForeachEnd) SEMI;
+
+/******************** IfCondition *********************/
+
+IfCondition ::= (IfCond) Condition
+				|
+				(ErrorIf) error:e
+				{: parser.report_error("Greska u logickom izrazu unutar if konstrukcije. Izvrsen je oporavak na liniji " + eleft, null); :}
+				;
+
+OptElse ::= (ElseStmt) ELSE Statement
+			|
+			(NoElseStmt) /* epsilon */
+			;
+
+
+/******************************************************/
+/********************* Designator *********************/
+/******************************************************/
+
+DesignatorStatement ::= (AssignOper) DesignatorAssignOperation
+						|
+						(ProcCall) Designator LPAREN OptActPars RPAREN
+						|
+						(IncEff) Designator INC
+						|
+						(DecEff) Designator DEC
+						|
+						(MultipleAssign) LBRACKET OptDesignatorList RBRACKET EQUAL Designator
+						;				
+
+DesignatorAssignOperation ::= (DesignAssignOp) Designator Assignop Expr
+							  |
+							  (ErrorAssign) error:e
+			  				  {: parser.report_error("Greska prilikom konstrukcije iskaza dodele. Izvrsen je oporavak na liniji " + eleft , null); :}
+							  ;					
+
+OptActPars ::= (OptionalActPars) ActPars
+			   |
+			   (NoOptActPars) /* epsilon */
+			   ;
+
+ActPars ::= (MultipleActPars) ActPars COMMA Expr 
+			|
+			(SingleActPars) Expr
+			;
+
+OptDesignatorList ::= (MultipleDesign) OptDesignatorList COMMA OptDesignator
+				  	  |
+				 	  (SingleDesign) OptDesignator
+				  	  ;
+				  	  
+OptDesignator ::= (OptDesign) Designator
+				  |
+				  (NoOptDesign) /* epsilon */
+				  ;
+
+Designator ::= (DesignVar) IDENT:id
+			   |
+			   (DesignField) Designator DOT IDENT:id
+			   |
+			   (DesignArray) Designator LBRACKET Expr RBRACKET
+			   |
+			   (ErrorArray) Designator LBRACKET error:e RBRACKET
+			   {: parser.report_error("Greska prilikom pristupanju elementu niza. Izvrsen je oporavak na liniji " + eleft , null); :}
+			   ;
+
+Expr ::= (Expr) ExprTerm OptAddTerms;
+
+ExprTerm ::= (ExpressionTerm) OtpMinusExpr Term;
+		 
+OtpMinusExpr ::= (NegativeExpr) MINUS
+		 		 |
+		 		 (PositiveExpr) /* epsilon */
+		 		 ;
+
+OptAddTerms ::= (OptionalAddTerms) OptAddTerms Addop Term
+				|
+				(NoOptAddTerms) /* epsilon */
+				;
+
+Term ::= (Term) Factor OptMulFacts;
+
+OptMulFacts ::= (OptionalMulFacts) OptMulFacts Mulop Factor
+				|
+				(NoOptMulFacts) /* epsilon */
+				;
+
+Factor ::= (DesignFactor) Designator OptMethCall
+		   |
+		   (FactorNum) NUMBER
+		   |
+		   (FactorChar) CHAR
+		   |
+		   (FactorBool) BOOL
+		   |
+		   (FactorNewArray) NEW Type LBRACKET Expr RBRACKET
+		   |
+		   (FactorNewMeth) NEW Type OptMethCall
+		   |
+		   (FactorExpr) LPAREN Expr RPAREN
+		   |
+		   (FactorNewMatrix) NEW Type LBRACKET Expr RBRACKET LBRACKET Expr RBRACKET
+		   ;
+
+OptMethCall ::= (OptionalMethCall) LPAREN OptActPars RPAREN
+				| 
+				(NoOptMethCall) /* epsilon */
+				|
+		   		(FactorMap) DOT MAP LPAREN MapName ASSIGMENT Expr RPAREN
+				;
+
+MapName ::= (MapName) IDENT:id;
+
+/******************************************************/
+/********************* Condition **********************/
+/******************************************************/
+
+Condition ::= (MultipleConditions) Condition OR CondTerm
+			  |
+			  (SingleCondition) CondTerm
+			  ;
+			  
+CondTerm ::= (MultipleCondTerms) CondTerm AND CondFact
+			 |
+			 (SingleCondTerm) CondFact
+			 ;
+		  
+CondFact ::= (MultipleCondFact) Expr Relop Expr
+			 |
+			 (SingleCondFact) Expr
+			 ;
+			   	 
+		  
+/******************************************************/
+/********************* Operation **********************/
+/******************************************************/			  
+			  
+Label ::= IDENT;			  
+			  
+Assignop ::= (AssignOperation) EQUAL;
+
+Relop ::= (EqualsOperation) EQUALS
+		  |
+		  (NotEqualsOperation) NOT_EQUALS
+		  |
+		  (GreaterOperation) GREATER
+		  |
+		  (GreaterEqualsOperation) GREATER_EQUALS
+		  |
+		  (LessOperation) LESS
+		  |
+		  (LessEqualsOperation) LESS_EQUALS
+		  ;
+
+Addop ::= (PlusOperation) PLUS
+		  |
+		  (MinusOperation) MINUS
+		  ;
+
+Mulop ::= (MulOperation) MUL 
+		  | 
+		  (DivOperation) DIV 
+		  | 
+		  (ModOperation) MOD;			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+

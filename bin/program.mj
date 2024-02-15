@@ -1,0 +1,35 @@
+program MJProgram
+	char c;
+	bool b;
+	int t;
+	int arr[];
+	int mat[][];
+	
+	class A{}
+{		
+	int f(int x){
+		x = x + 1;
+		return x;
+	}
+	
+	void v(char par[][]){
+	
+	}
+	
+	
+	void main() 
+		int x; int i, p;
+	{
+		x = 10;
+		i = 20;
+		arr = new int[2];
+		mat = new int[2][2];
+		arr[1] = 2;
+		mat[1][1] = 1;
+		
+		i = x + f(55) + arr[1] + mat[1][1];
+		print(i);
+		
+		f(55);
+	}
+}

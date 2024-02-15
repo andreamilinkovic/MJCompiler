@@ -1,0 +1,8 @@
+program MJProgram
+	int x; 
+	const int pi = 3, e = 2;
+{
+	void main(int param1, int param2) int i; int x[]; char ch;	{
+	
+	}
+}
